@@ -1,49 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-   <h1>Customer feedback survey</h1>
-   <p>please take a moment to comlete the survey </p>
-   <form action="">
-    <label for="text">Your Name:</label>
-    <input type="text" name="text" id="name">
-    <br><br>
-    <label for="number">Your Age :</label>
-    <input type="number" name="number" id="number">
-    <br><br>
-    <label for="opt">Favorite Color</label>
-    <select name="opt" id="color">
+  </head>
+  <body>
+    <h1>Customer feedback survey</h1>
+    <p>please take a moment to comlete the survey</p>
+    <form action="">
+      <label for="text">Your Name:</label>
+      <input type="text" name="text" id="name" />
+      <br /><br />
+      <label for="number">Your Age :</label>
+      <input type="number" name="number" id="number" />
+      <br /><br />
+      <label for="opt">Favorite Color</label>
+      <select name="opt" id="color">
         <option value="red">red</option>
         <option value="pink">pink</option>
         <option value="yellow">yellow</option>
-        <option value="Gra">Gray</option>
-    </select><br><br>
-    <label for="textarea">Your Feedback:</label><br>
-    <textarea name="textarea" id="area" rows="4" cols="50" class="hello"></textarea>
-    <br><br>
-    <input type="submit" value="submit" id="gello">
-
-   </form>
-   <h1>Instruction</h1>
-   <ul>
-    <li>Fill in your name and age in  the first two fields</li>
-    <li>Select your favorite color from the dropdown list</li>
-    <li>Provide your feedback in the box </li>
-    <li>Click the "submit" button to submit your responeses</li>
-   </ul>
-   <h1>Survey Responeses</h1>
-   <table border="1" id="responsTable">
-    <tr>
-        <th>Name </th>
+        <option value="Gra">Gray</option></select
+      ><br /><br />
+      <label for="textarea">Your Feedback:</label><br />
+      <textarea
+        name="textarea"
+        id="area"
+        rows="4"
+        cols="50"
+        class="hello"
+      ></textarea>
+      <br /><br />
+      <input type="submit" value="submit" id="gello" />
+    </form>
+    <h1>Instruction</h1>
+    <ul>
+      <li>Fill in your name and age in the first two fields</li>
+      <li>Select your favorite color from the dropdown list</li>
+      <li>Provide your feedback in the box</li>
+      <li>Click the "submit" button to submit your responeses</li>
+    </ul>
+    <h1>Survey Responeses</h1>
+    <table border="1" id="responsTable">
+      <tr>
+        <th>Name</th>
         <th>age</th>
         <th>Color</th>
         <th>Feedback</th>
-    </tr>
-   </table>
-   <script src="/js1.js"></script>
-</body>
+      </tr>
+    </table>
+    <!-- <script src="/js1.js"></script> -->
+     <script>
+      var btn = document.getElementById("gello");
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("name").value;
+        var number = document.getElementById("number").value;
+        var color = document.getElementById("color").value;
+        var feedback = document.getElementById("area").value;
+        var table = document.getElementById("responsTable");
+        // var NewRow = table.insertRow(-1);
+        // NewRow.insertCell(0).innerText = name;
+        // NewRow.insertCell(1).innerText = number;
+        // NewRow.insertCell(2).innerText = color;
+        // NewRow.insertCell(3).innerText = feedback
+        // NewRow.insertCell(3).innerText = feedback;
+        var NewRow=document.createElement("tr");
+        var tr1=document.createElement("td");
+        tr1.innerHTML=localStorage.setItem("name",name);
+        NewRow.appendChild(tr1);
+        var tr2=document.createElement("td");
+        tr2.innerHTML=localStorage.setItem("number",number);
+        NewRow.appendChild(tr2);
+        var tr3=document.createElement("td");
+        tr3.innerHTML=localStorage.setItem("color",color); 
+        NewRow.appendChild(tr3);
+        var tr4=document.createElement("td");
+        tr4.innerHTML=localStorage.setItem("feedback",feedback);
+        NewRow.appendChild(tr4);
+        table.appendChild(NewRow);
+        tr1.innerText=localStorage.getItem("name");
+        console.log(tr1.innerHTML=localStorage.getItem("name"));
+        tr2.innerText=localStorage.getItem("number");
+        tr3.innerText=localStorage.getItem("color");
+        tr4.innerText=localStorage.getItem("feedback");
+
+        
+
+
+
+        
+  
+
+
+
+        
+        //   var NewRow = table.insertRow(-1);
+        //   NewRow.insertCell(0).innerText = localStorage.getItem("name");
+        //   NewRow.insertCell(1).innerText = localStorage.getItem("number");
+      });
+
+
+     </script>
+  </body>
+  
 </html>
